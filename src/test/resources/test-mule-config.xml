@@ -1,0 +1,19 @@
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:assertobjectequals="http://www.mulesoft.org/schema/mule/assertobjectequals"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+          http://www.mulesoft.org/schema/mule/assertobjectequals http://www.mulesoft.org/schema/mule/assertobjectequals/current/mule-assertobjectequals.xsd">
+
+    <assertobjectequals:config name="config" configId="configId">
+        <assertobjectequals:connection requiredParameter="aValue" />
+    </assertobjectequals:config>
+
+    <flow name="sayHiFlow">
+        <assertobjectequals:say-hi person="Mariano Gonzalez"/>
+    </flow>
+
+    <flow name="retrieveInfoFlow">
+        <assertobjectequals:retrieve-info config-ref="config"/>
+    </flow>
+
+</mule>
