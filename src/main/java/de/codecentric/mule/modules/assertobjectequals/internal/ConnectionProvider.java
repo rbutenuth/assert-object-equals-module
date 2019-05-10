@@ -5,7 +5,6 @@ import org.mule.runtime.extension.api.annotation.param.Parameter;
 import org.mule.runtime.extension.api.annotation.param.Optional;
 import org.mule.runtime.api.connection.ConnectionValidationResult;
 import org.mule.runtime.api.connection.PoolingConnectionProvider;
-import org.mule.runtime.api.connection.ConnectionProvider;
 import org.mule.runtime.api.connection.CachedConnectionProvider;
 import org.mule.runtime.extension.api.annotation.param.display.DisplayName;
 
@@ -22,11 +21,11 @@ import org.slf4j.LoggerFactory;
  * <p>
  * This particular example is a {@link PoolingConnectionProvider} which declares that connections resolved by this provider
  * will be pooled and reused. There are other implementations like {@link CachedConnectionProvider} which lazily creates and
- * caches connections or simply {@link ConnectionProvider} if you want a new connection each time something requires one.
+ * caches connections or simply {@link org.mule.runtime.api.connection.ConnectionProvider} if you want a new connection each time something requires one.
  */
-public class AssertObjectEqualsConnectionProvider implements PoolingConnectionProvider<AssertObjectEqualsConnection> {
+public class ConnectionProvider implements PoolingConnectionProvider<Connection> {
 
-  private final Logger LOGGER = LoggerFactory.getLogger(AssertObjectEqualsConnectionProvider.class);
+  private final Logger LOGGER = LoggerFactory.getLogger(ConnectionProvider.class);
 
  /**
   * A parameter that is always required to be configured.
@@ -43,12 +42,12 @@ public class AssertObjectEqualsConnectionProvider implements PoolingConnectionPr
   private int optionalParameter;
 
   @Override
-  public AssertObjectEqualsConnection connect() throws ConnectionException {
-    return new AssertObjectEqualsConnection(requiredParameter + ":" + optionalParameter);
+  public Connection connect() throws ConnectionException {
+    return new Connection(requiredParameter + ":" + optionalParameter);
   }
 
   @Override
-  public void disconnect(AssertObjectEqualsConnection connection) {
+  public void disconnect(Connection connection) {
     try {
       connection.invalidate();
     } catch (Exception e) {
@@ -57,7 +56,7 @@ public class AssertObjectEqualsConnectionProvider implements PoolingConnectionPr
   }
 
   @Override
-  public ConnectionValidationResult validate(AssertObjectEqualsConnection connection) {
+  public ConnectionValidationResult validate(Connection connection) {
     return ConnectionValidationResult.success();
   }
 }

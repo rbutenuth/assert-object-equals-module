@@ -17,7 +17,7 @@ import java.util.*;
 /**
  * This class is a container for operations, every public method in this class will be taken as an extension operation.
  */
-public class AssertObjectEqualsOperations {
+public class Operations {
 
   /**
    * Compare two objects. Drill down into {@link Map} and {@link List}, use {@link Object#equals(Object)} for all other
@@ -89,7 +89,7 @@ public class AssertObjectEqualsOperations {
               }
               messageBuilder.append(s);
           }
-          throw new AssertionError("\n" + messageBuilder);
+          throw new AssertionError(messageBuilder);
       }
   }
 
