@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule
+        xmlns:assertobjectequals="http://www.mulesoft.org/schema/mule/assertobjectequals"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+        xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+        xmlns="http://www.mulesoft.org/schema/mule/core"
+        xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+        xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
+		http://www.mulesoft.org/schema/mule/assertobjectequals http://www.mulesoft.org/schema/mule/assertobjectequals/current/mule-assertobjectequals.xsd">
+
+    <munit:config name="object-demos" doc:name="Munit configuration" />
+
+    <munit:test name="compare-strings-success-test" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="success (foo is foo)"
+                                                expected="#['foo']"
+                                                actual="#['foo']" >
+                <assertobjectequals:path-options />
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-strings-fail-test" expectedException="java.lang.AssertionError" description="MUnit Test">
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="fails (foo is not bar)"
+                                                expected="#['foo']"
+                                                actual="#['bar']" >
+                <assertobjectequals:path-options />
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-expected-from-resource-test" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="success (foo is foo)"
+                                                expected="#[MunitTools::getResourceAsString('json/simple-expected.json')]"
+                                                actual="#['{&quot;foo&quot;: 42}']" >
+                <assertobjectequals:path-options />
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-person-fail-test" expectedException="java.lang.AssertionError" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="fails (timestamp)"
+                                                expected="#[MunitTools::getResourceAsString('json/person-expected.json')]"
+                                                actual="#[MunitTools::getResourceAsString('json/person-actual.json')]" >
+                <assertobjectequals:path-options />
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-person-success-1-test" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="success (options in object)"
+                                                expected="#[MunitTools::getResourceAsString('json/person-expected.json')]"
+                                                actual="#[MunitTools::getResourceAsString('json/person-actual.json')]">
+                <assertobjectequals:path-options >
+                    <assertobjectequals:path-option value="['addresses'][#]['timestamp'] ignore" />
+                </assertobjectequals:path-options>
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-person-success-2-test" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="success (options in MEL)"
+                                                expected="#[MunitTools::getResourceAsString('json/person-expected.json')]"
+                                                actual="#[MunitTools::getResourceAsString('json/person-actual.json')]"
+                                                pathOptions="#[[&quot;['addresses'][#]['timestamp'] ignore&quot;]]">
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-person-fail-map-order-test" expectedException="java.lang.AssertionError" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="success (options in object)"
+                                                expected="#[MunitTools::getResourceAsString('json/person-expected.json')]"
+                                                actual="#[MunitTools::getResourceAsString('json/person-actual.json')]"
+                                                pathOptions="#[[&quot;['addresses'][#]['timestamp'] ignore&quot;]]"
+                                                checkMapOrder="true">
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+
+    <munit:test name="compare-person-fail-contains-only-on-maps-test" expectedException="java.lang.AssertionError" description="MUnit Test" >
+        <munit:validation >
+            <assertobjectequals:compare-objects doc:name="success (options in object)"
+                                                expected="#[MunitTools::getResourceAsString('json/person-extended.json')]"
+                                                actual="#[MunitTools::getResourceAsString('json/person-actual.json')]"
+                                                containsOnlyOnMaps="true">
+                <assertobjectequals:path-options />
+            </assertobjectequals:compare-objects>
+        </munit:validation>
+    </munit:test>
+</mule>

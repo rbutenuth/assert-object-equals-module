@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule
+        xmlns:assertobjectequals="http://www.mulesoft.org/schema/mule/assertobjectequals"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:munit="http://www.mulesoft.org/schema/mule/munit"
+        xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+        xmlns="http://www.mulesoft.org/schema/mule/core"
+        xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+        xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd
+		http://www.mulesoft.org/schema/mule/assertobjectequals http://www.mulesoft.org/schema/mule/assertobjectequals/current/mule-assertobjectequals.xsd">
+
+  <munit:config name="xml-demos" doc:name="Munit configuration" />
+
+  <munit:test name="compare-xml-success-test" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="success (xml is xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;']"
+                                      xmlCompareOption="NORMALIZE_WHITESPACE">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+
+  <munit:test name="compare-xml-fail-test" expectedException="java.lang.AssertionError" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="fails (xml is not other xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;ABBA&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;AB BA&lt;/b&gt;&lt;/a&gt;']"
+                                      xmlCompareOption="NORMALIZE_WHITESPACE">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+
+  <munit:test name="compare-expected-xml-from-resource-test" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="success (xml is xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;ABBA&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#[MunitTools::getResourceAsString('xml/simple-expected.xml')]"
+                                      xmlCompareOption="NORMALIZE_WHITESPACE">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+
+  <munit:test name="compare-xml-whitespace-success-test" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="success (xml is xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;AB BA&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;AB    BA&lt;/b&gt;&lt;/a&gt;']"
+                                      xmlCompareOption="NORMALIZE_WHITESPACE">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+
+  <munit:test name="compare-xml-whitespace-fail-test" expectedException="java.lang.AssertionError" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="fails (xml is not other xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;AB BA&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;AB    BA&lt;/b&gt;&lt;/a&gt;']"
+                                      xmlCompareOption="IGNORE_WHITESPACE">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+
+  <munit:test name="compare-xml-comment-success-test" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="success (xml is xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;&lt;!-- fancy comment --&gt;&lt;/b&gt;&lt;/a&gt;']"
+                                      xmlCompareOption="IGNORE_COMMENTS">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+
+  <munit:test name="compare-xml-comment-fail-test" expectedException="java.lang.AssertionError" description="Munit Test">
+    <munit:validation >
+      <assertobjectequals:compare-xml doc:name="fails (xml is not other xml)"
+                                      expected="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;&lt;/b&gt;&lt;/a&gt;']"
+                                      actual="#['&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;a&gt;&lt;b&gt;&lt;!-- fancy comment --&gt;&lt;/b&gt;&lt;/a&gt;']"
+                                      xmlCompareOption="NORMALIZE_WHITESPACE">
+      </assertobjectequals:compare-xml>
+    </munit:validation>
+  </munit:test>
+</mule>
