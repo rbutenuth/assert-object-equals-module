@@ -54,4 +54,17 @@
             <version>2.3.0</version>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>artifactory.codecentric.de-releases</name>
+            <url>${env.MAVEN_REPO_URL}/public</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>artifactory.codecentric.de-snapshots</name>
+            <url>${env.MAVEN_REPO_URL}/public</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
