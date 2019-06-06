@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.codecentric.mule.modules</groupId>
     <artifactId>assert-object-equals-module</artifactId>
-    <version>1.0.181-SNAPSHOT</version>
+    <version>1.1.181-SNAPSHOT</version>
     <packaging>mule-extension</packaging>
     <name>Assert Object Equals Extension</name>
 
@@ -56,15 +56,10 @@
     </dependencies>
 
     <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>artifactory.codecentric.de-releases</name>
-            <url>${env.MAVEN_REPO_URL}/public</url>
-        </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>artifactory.codecentric.de-snapshots</name>
-            <url>${env.MAVEN_REPO_URL}/public</url>
+            <url>https://artifactory.codecentric.de:443/artifactory/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
