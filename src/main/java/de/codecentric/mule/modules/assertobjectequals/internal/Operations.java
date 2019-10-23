@@ -41,6 +41,13 @@ public class Operations {
    *            </ul>
    *            Remember: Encoding for Json is always UTF8
    *
+   * @param containsOnlyOnMaps
+   *            The actual value entry set of maps can contain more values than the expected set. So you tests do not fail
+   *            when there are more elements than expected in the result.
+   *
+   * @param checkMapOrder
+   *            The order of map entries is checked. The default is to ignore order of map entries.
+   *
    * @param pathOptions
    *            Options for path patterns to control the comparison. Syntax of one List entry: Zero to <code>n</code> path
    *            parts. The parts can have the following syntax:
@@ -61,8 +68,6 @@ public class Operations {
    *            CHECK_MAP_ORDER: The order of map entries is checked. The default is to ignore order of map entries.
    *
    *            IGNORE: The actual node and its subtree is ignored completely.
-   *
-   * @return The original payload.
    *
    * @throws Exception
    *             When comparison fails or on technical problems (e.g. parsing)
@@ -110,8 +115,6 @@ public class Operations {
    *
    *            NORMALIZE_WHITESPACE: Normalize Text-Elements by removing all empty text nodes and normalizing the
    *            non-empty ones.
-   *
-   * @return The original payload.
    *
    * @throws Exception
    *             When comparison fails or on technical problems (e.g. parsing)
