@@ -32,6 +32,13 @@
         </license>
     </licenses>
 
+    <scm>
+        <connection>scm:git:https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module.git</connection>
+        <developerConnection>scm:git:https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module.git</developerConnection>
+        <url>https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module</url>
+        <tag>assert-object-equals-module-1.1.3</tag>
+    </scm>
+
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
