@@ -84,6 +84,9 @@
         </profile>
         <profile>
             <id>deploy-to-codecentric</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <distributionManagement>
                 <repository>
                     <id>central</id>
