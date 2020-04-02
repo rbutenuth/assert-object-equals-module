@@ -9,16 +9,10 @@ In case you are working with Mule 3.x, have a look [here](https://github.com/rbu
 To install this module via Maven, please add following repository and dependency to yur pom.xml file
 
 ```xml
-<repository>
-    <id>central</id>
-    <name>artifactory.codecentric.de-releases</name>
-    <url>https://artifactory.codecentric.de/artifactory/public</url>
-</repository>
-
 <dependency>
     <groupId>de.codecentric.mule.modules</groupId>
     <artifactId>assert-object-equals-module</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.2</version>
     <classifier>mule-plugin</classifier>
 </dependency>
 ```
