@@ -6,7 +6,7 @@ In case you are working with Mule 3.x, have a look [here](https://github.com/rbu
 
 ## Installation
 
-To install this module via Maven, please add following repository and dependency to yur pom.xml file
+To install this module via Maven, please add following dependency to yur pom.xml file
 
 ```xml
 <dependency>
