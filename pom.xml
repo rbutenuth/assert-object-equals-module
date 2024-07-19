@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>de.codecentric.mule.modules</groupId>
     <artifactId>assert-object-equals-module</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.0</version>
     <packaging>mule-extension</packaging>
     <name>Assert Object Equals Extension</name>
     <description>A Mule connector for comparing object structures
