@@ -61,9 +61,7 @@
     </licenses>
 
     <scm>
-        <connection>scm:git@github.com:rbutenuth/assert-object-equals-module.git</connection>
-        <developerConnection>scm:git@github.com:rbutenuth/assert-object-equals-module.git</developerConnection>
-        <url>https://github.com/rbutenuth/assert-object-equals-module</url>
+        <connection>scm:git:git@github.com:rbutenuth/assert-object-equals-module.git</connection>
         <tag>assert-object-equals-module-1.1.2</tag>
     </scm>
 
