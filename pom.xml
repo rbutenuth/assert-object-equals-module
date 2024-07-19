@@ -9,7 +9,7 @@
     <name>Assert Object Equals Extension</name>
     <description>A Mule connector for comparing object structures
   		(Map/List) or XML in MUnit tests.</description>
-    <url>https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module</url>
+    <url>https://github.com/rbutenuth/assert-object-equals-module</url>
 
     <parent>
         <groupId>org.mule.extensions</groupId>
@@ -22,7 +22,7 @@
 		<licensePath>LICENSE.md</licensePath>
 		<java-version>1.8</java-version>
 	 	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  		<project.scm.id>GitLab</project.scm.id>
+  		<project.scm.id>GitHub</project.scm.id>
   		<dependency.locations.enabled>false</dependency.locations.enabled>
 		<cobertura-maven-plugin-version>2.7</cobertura-maven-plugin-version>
 		<maven-compiler-plugin-version>3.13.0</maven-compiler-plugin-version>
@@ -61,9 +61,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module.git</connection>
-        <developerConnection>scm:git:https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module.git</developerConnection>
-        <url>https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module</url>
+        <connection>scm:git@github.com:rbutenuth/assert-object-equals-module.git</connection>
+        <developerConnection>scm:git@github.com:rbutenuth/assert-object-equals-module.git</developerConnection>
+        <url>https://github.com/rbutenuth/assert-object-equals-module</url>
         <tag>assert-object-equals-module-1.1.2</tag>
     </scm>
 
