@@ -1,11 +1,9 @@
 # Assert Object Equals Anypoint Module
 
-## Mule supported versions
-Mule 4.7.x (tested on 4.7.0 version)
 
-## Installation
+## Maven Dependency
 
-To install this module via Maven, please add following dependency to your pom.xml file
+Add this dependency to your application pom.xml (check for newer version):
 
 ```xml
 <dependency>
@@ -16,6 +14,8 @@ To install this module via Maven, please add following dependency to your pom.xm
 </dependency>
 ```
 
+The module is available on [Maven Central](https://mvnrepository.com/), so you don't need it to compile/install it yourself.
+
 ## Usage
 
 The connector can be used for Object structures or XML:
@@ -23,17 +23,13 @@ The connector can be used for Object structures or XML:
 * [Object structures and JSON](../docs/compare-objects.md)
 * [XML](../docs/compare-xml.md)
 
-## Mule example app
+## Release notes
 
-Mule 4 example application can be checked out here:
-* https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equal-module-mule-app-example
+### 1.2.0 2024-07-19
 
-## CI
+- Switched to Java SDK 1.6.3
+- Support to run in Mule runtime with Java 17
 
-Pipelines for this project:
-* https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module/pipelines?scope=branches&page=1
+### 1.1.2 2019-11-01
 
-## Reporting Issues
-
-We use GitLab Issues for tracking issues with this connector. You can report new issues at this link:
-* https://gitlab.codecentric.de/danijel.dragicevic/assert-object-equals-module/issues.
+- Ported from Mule 3 connector
