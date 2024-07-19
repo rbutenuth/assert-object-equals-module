@@ -67,7 +67,8 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
+			<id>ossrh-snapshot</id>
+			<name>Nexus Snapshot Repository</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
@@ -126,9 +127,13 @@
         	<plugin>
     			<groupId>org.apache.maven.plugins</groupId>
     			<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin-version}</version>
     			<configuration>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
+					<compilerArgs>
+						<args>-parameters</args>
+					</compilerArgs>
     			</configuration>
     		</plugin>
           <plugin>
@@ -168,6 +173,8 @@
               <useReleaseProfile>false</useReleaseProfile>
               <releaseProfiles>release</releaseProfiles>
               <goals>deploy</goals>
+					<localCheckout>true</localCheckout>
+					<pushChanges>false</pushChanges>
             </configuration>
           </plugin>
           <plugin>
