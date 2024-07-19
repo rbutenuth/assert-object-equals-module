@@ -1,18 +1,17 @@
 # Assert Object Equals Anypoint Module
 
 ## Mule supported versions
-Mule 4.x (tested on 4.1.4 version)
-In case you are working with Mule 3.x, have a look [here](https://github.com/rbutenuth/assert-object-equals-connector), there you find a version suitable for Mule 3.
+Mule 4.7.x (tested on 4.7.0 version)
 
 ## Installation
 
-To install this module via Maven, please add following dependency to yur pom.xml file
+To install this module via Maven, please add following dependency to your pom.xml file
 
 ```xml
 <dependency>
     <groupId>de.codecentric.mule.modules</groupId>
     <artifactId>assert-object-equals-module</artifactId>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
     <classifier>mule-plugin</classifier>
 </dependency>
 ```
