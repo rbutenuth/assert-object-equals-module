@@ -20,8 +20,8 @@ The module is available on [Maven Central](https://mvnrepository.com/), so you d
 
 The connector can be used for Object structures or XML:
 
-* [Object structures and JSON](../docs/compare-objects.md)
-* [XML](../docs/compare-xml.md)
+* [Object structures and JSON](https://github.com/rbutenuth/assert-object-equals-module/blob/main/docs/compare-objects.md)
+* [XML](https://github.com/rbutenuth/assert-object-equals-module/blob/main/docs/compare-xml.md)
 
 ## Release notes
 
